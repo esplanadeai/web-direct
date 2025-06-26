@@ -1,0 +1,34 @@
+<!doctype html><html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Acme AI – Book a Demo</title>
+  <link rel="stylesheet" href="assets/style.css" />
+  <script src="js/convai-tools.js"></script>
+</head>
+<body>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="booking.html">Book a Demo</a>
+  </nav>
+
+  <section class="section">
+    <h1>Schedule Your Demo</h1>
+    <!-- Cal inline embed code begins -->
+    <div style="width:100%;height:100%;overflow:scroll" id="my-cal-inline"></div>
+    <script type="text/javascript">
+      (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+    Cal("init", "quick-chat-15-minute-free-consultation", {origin:"https://app.cal.com"});
+
+      Cal.ns["quick-chat-15-minute-free-consultation"]("inline", {
+        elementOrSelector:"#my-cal-inline",
+        config: {"layout":"month_view"},
+        calLink: "xxxxxx",
+      });
+
+      Cal.ns["quick-chat-15-minute-free-consultation"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
+      </script>
+      <!-- Cal inline embed code ends -->
+  </section>
+</body>
+</html> 

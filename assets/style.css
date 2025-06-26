@@ -1,0 +1,34 @@
+body { margin:0; font-family: system-ui, sans-serif; line-height:1.5; }
+nav { background:#111; padding:1rem; }
+nav a { color:#fff; margin-right:1.5rem; text-decoration:none; }
+.section { max-width:780px; margin:3rem auto; padding:0 1rem; }
+.card-grid { display:flex; gap:1.5rem; flex-wrap:wrap; }
+.card { flex:1 1 200px; border:1px solid #ddd; border-radius:8px; padding:1rem; }
+.card h3 { margin-top:0; }
+iframe.calendar { width:100%; height:700px; border:none; }
+
+/* Widget positioning */
+.convai-widget {
+  position: fixed;
+  z-index: 1000;
+}
+
+.convai-widget.bottom-right {
+  bottom: 20px;
+  right: 20px;
+}
+
+.convai-widget.bottom-left {
+  bottom: 20px;
+  left: 20px;
+}
+
+.convai-widget.top-right {
+  top: 20px;
+  right: 20px;
+}
+
+.convai-widget.top-left {
+  top: 20px;
+  left: 20px;
+} 
