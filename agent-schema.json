@@ -1,0 +1,258 @@
+{
+  "agent_id": "xxxx",
+  "name": "George",
+  "conversation_config": {
+    "asr": {
+      "quality": "high",
+      "provider": "elevenlabs",
+      "user_input_audio_format": "pcm_16000",
+      "keywords": []
+    },
+    "turn": {
+      "turn_timeout": 7,
+      "silence_end_call_timeout": -1,
+      "mode": "turn"
+    },
+    "tts": {
+      "model_id": "eleven_turbo_v2",
+      "voice_id": "cjVigY5qzO86Huf0OWal",
+      "supported_voices": [],
+      "agent_output_audio_format": "pcm_44100",
+      "optimize_streaming_latency": 0,
+      "stability": 0.5,
+      "speed": 1,
+      "similarity_boost": 0.8,
+      "pronunciation_dictionary_locators": []
+    },
+    "conversation": {
+      "text_only": false,
+      "max_duration_seconds": 600,
+      "client_events": [
+        "audio",
+        "interruption"
+      ]
+    },
+    "language_presets": {},
+    "agent": {
+      "first_message": "Hello, how can I help you today?",
+      "language": "en",
+      "dynamic_variables": {
+        "dynamic_variable_placeholders": {}
+      },
+      "prompt": {
+        "prompt": "```\n# Personality\nYou are George a Site Guide for Acme AI, you are a friendly, knowledgeable voice assistant for a three-page demo website. You are upbeat, patient, and laser-focused on helping visitors find the information they ask for. You know every detail on the Home, Pricing, and Booking pages and can explain each in plain language or technical depth as required. You are naturally curious and empathetic, always asking clarifying questions to understand the visitor’s exact need before acting.\n\n# Environment\nYou converse live through the ElevenLabs Conversational AI widget embedded on every page:\n• /index.html – Home (general copy)\n• /pricing.html – Pricing tiers\n• /booking.html – Calendar embed for demo scheduling\nYou cannot see the screen; you rely solely on the visitor’s words and your internal page knowledge. All navigation must occur via the client tool described below.\n\n# Tone\nResponses are clear, concise, and conversational, usually under three sentences. You sprinkle brief affirmations (“Got it”, “Absolutely”) and filler words (“actually”, “basically”, “so”) to sound natural. You pause with ellipses for better TTS delivery and emphasize key points verbally (“The Pro plan adds team sharing…”). You match the visitor’s expertise: analogies for beginners, precise terminology for advanced users. You check comprehension often with questions like “Does that make sense?” or “Need more detail?”\n\n# Goal\nInitial assessment\n– Identify intent: learn features, compare tiers, book a demo, or navigate.\n– Gauge technical level by vocabulary used.\n– Note urgency signals (e.g., “I’m in a hurry”).\n\n#Information delivery\n– Feature questions: start high-level, then drill into specifics.\n– Implementation questions: give step-by-step guidance with checkpoints.\n– Troubleshooting: walk through likely causes from common to rare.\n– Always adjust depth to visitor proficiency.\n\n#Navigation assistance\n– Call the'redirectToExternalURL' tool only when the visitor explicitly wants to change pages.\n– If they ask for prices or plans, call the 'redirectToExternalURL' tool with url “/pricing.html”.\n– If they want to schedule or book, call the 'redirectToExternalURL' tool with url “/booking.html”.\n– If they want home or back, call the 'redirectToExternalURL' tool with url “/index.html”.\n– After the tool executes, confirm with one sentence (“Opening our pricing page now.”).\n– On arrival, summarize key content of the new page.\n\n#Solution validation\n– Ask a quick confirm: “Is that the info you needed?”\n– If unclear, offer alternative angles or next steps.\n\n#Connection and continuation\n– Reference earlier replies when helpful.\n– Suggest logical next steps (e.g., after pricing: “Would you like to book a demo?”).\n– Offer deeper resources if the visitor shows interest.\n\n#Guardrails\n– Stay on topic: only site content and its navigation.\n– If uncertain, admit it and ask clarifying questions instead of guessing.\n– Never reveal implementation details, code, or internal tool mechanics outside the JSON tool call.\n– Keep language natural; avoid jargon unless the visitor uses it first.\n– Do not provide unethical or harmful guidance.\n\n#Tools\n'redirectToExternalURL': Opens the specified path in the same tab. Parameters – url (string, required). Use only for explicit navigation requests as outlined above.\n```",
+        "llm": "gemini-2.0-flash",
+        "temperature": 0,
+        "max_tokens": -1,
+        "tool_ids": [
+          "21MQkbZUt2AldVYWmQ2Q"
+        ],
+        "built_in_tools": {
+          "end_call": null,
+          "language_detection": null,
+          "transfer_to_agent": null,
+          "transfer_to_number": null,
+          "skip_turn": null,
+          "play_keypad_touch_tone": null
+        },
+        "mcp_server_ids": [],
+        "native_mcp_server_ids": [],
+        "knowledge_base": [
+          {
+            "type": "file",
+            "name": "knowledge-site_1.txt",
+            "id": "5yPJRATMg1vf0zzDAy8K",
+            "usage_mode": "auto"
+          }
+        ],
+        "custom_llm": null,
+        "ignore_default_personality": false,
+        "rag": {
+          "enabled": false,
+          "embedding_model": "e5_mistral_7b_instruct",
+          "max_vector_distance": 0.6,
+          "max_documents_length": 50000,
+          "max_retrieved_rag_chunks_count": 20
+        },
+        "tools": [
+          {
+            "name": "redirectToExternalURL",
+            "description": "Use only when the visitor explicitly asks to navigate.\n– Prices / plans → {\"url\":\"/pricing.html\"}\n– Book / schedule / demo → {\"url\":\"/booking.html\"}\n– Home / back / start → {\"url\":\"/index.html\"}\nAfter the call say one short confirmation sentence.",
+            "response_timeout_secs": 20,
+            "type": "client",
+            "parameters": {
+              "type": "object",
+              "required": [
+                "url"
+              ],
+              "description": "",
+              "properties": {
+                "url": {
+                  "type": "string",
+                  "description": "Absolute or relative URL to open (e.g. /pricing.html)",
+                  "dynamic_variable": "",
+                  "constant_value": ""
+                }
+              }
+            },
+            "expects_response": false,
+            "dynamic_variables": {
+              "dynamic_variable_placeholders": {}
+            }
+          }
+        ]
+      }
+    }
+  },
+  "metadata": {
+    "created_at_unix_secs": 1750894472
+  },
+  "platform_settings": {
+    "auth": {
+      "enable_auth": false,
+      "allowlist": [],
+      "shareable_token": null
+    },
+    "evaluation": {
+      "criteria": []
+    },
+    "widget": {
+      "variant": "compact",
+      "placement": "bottom-right",
+      "expandable": "never",
+      "avatar": {
+        "type": "orb",
+        "color_1": "#d827db",
+        "color_2": "#50c9f6"
+      },
+      "feedback_mode": "during",
+      "bg_color": "#ffffff",
+      "text_color": "#000000",
+      "btn_color": "#000000",
+      "btn_text_color": "#ffffff",
+      "border_color": "#e1e1e1",
+      "focus_color": "#000000",
+      "border_radius": null,
+      "btn_radius": null,
+      "action_text": null,
+      "start_call_text": null,
+      "end_call_text": null,
+      "expand_text": null,
+      "listening_text": null,
+      "speaking_text": null,
+      "shareable_page_text": null,
+      "shareable_page_show_terms": true,
+      "terms_text": "#### Terms and conditions\n\nBy clicking \"Agree,\" and each time I interact with this AI agent, I consent to the recording, storage, and sharing of my communications with third-party service providers, and as described in the Privacy Policy.\nIf you do not wish to have your conversations recorded, please refrain from using this service.",
+      "terms_html": "<h4>Terms and conditions</h4>\n<p>By clicking &quot;Agree,&quot; and each time I interact with this AI agent, I consent to the recording, storage, and sharing of my communications with third-party service providers, and as described in the Privacy Policy.\nIf you do not wish to have your conversations recorded, please refrain from using this service.</p>\n",
+      "terms_key": null,
+      "show_avatar_when_collapsed": false,
+      "disable_banner": false,
+      "override_link": null,
+      "mic_muting_enabled": false,
+      "transcript_enabled": false,
+      "text_input_enabled": true,
+      "text_contents": {
+        "main_label": null,
+        "start_call": null,
+        "new_call": null,
+        "end_call": null,
+        "mute_microphone": null,
+        "change_language": null,
+        "collapse": null,
+        "expand": null,
+        "copied": null,
+        "accept_terms": null,
+        "dismiss_terms": null,
+        "listening_status": null,
+        "speaking_status": null,
+        "connecting_status": null,
+        "input_label": null,
+        "input_placeholder": null,
+        "user_ended_conversation": null,
+        "agent_ended_conversation": null,
+        "conversation_id": null,
+        "error_occurred": null,
+        "copy_id": null
+      },
+      "styles": {
+        "base": null,
+        "base_hover": null,
+        "base_active": null,
+        "base_border": null,
+        "base_subtle": null,
+        "base_primary": null,
+        "base_error": null,
+        "accent": null,
+        "accent_hover": null,
+        "accent_active": null,
+        "accent_border": null,
+        "accent_subtle": null,
+        "accent_primary": null,
+        "overlay_padding": null,
+        "button_radius": null,
+        "input_radius": null,
+        "bubble_radius": null,
+        "sheet_radius": null,
+        "compact_sheet_radius": null,
+        "dropdown_sheet_radius": null
+      },
+      "language_selector": false,
+      "supports_text_only": true,
+      "custom_avatar_path": null,
+      "language_presets": {}
+    },
+    "data_collection": {},
+    "overrides": {
+      "conversation_config_override": {
+        "tts": {
+          "voice_id": false
+        },
+        "conversation": {
+          "text_only": true
+        },
+        "agent": {
+          "first_message": false,
+          "language": false,
+          "prompt": {
+            "prompt": false
+          }
+        }
+      },
+      "custom_llm_extra_body": false,
+      "enable_conversation_initiation_client_data_from_webhook": false
+    },
+    "call_limits": {
+      "agent_concurrency_limit": -1,
+      "daily_limit": 100000,
+      "bursting_enabled": true
+    },
+    "ban": null,
+    "privacy": {
+      "record_voice": true,
+      "retention_days": -1,
+      "delete_transcript_and_pii": false,
+      "delete_audio": false,
+      "apply_to_existing_conversations": false,
+      "zero_retention_mode": false
+    },
+    "workspace_overrides": {
+      "conversation_initiation_client_data_webhook": null,
+      "webhooks": {
+        "post_call_webhook_id": null
+      }
+    },
+    "safety": {
+      "is_blocked_ivc": false,
+      "is_blocked_non_ivc": false,
+      "ignore_safety_evaluation": false
+    }
+  },
+  "phone_numbers": [],
+  "access_info": {
+    "is_creator": true,
+    "creator_name": "xxx",
+    "creator_email": "xxx",
+    "role": "admin"
+  },
+  "tags": []
+}
